@@ -1,0 +1,3 @@
+s:79:"DELETE
+                    FROM entry
+                    WHERE entry.id = 1 ";
