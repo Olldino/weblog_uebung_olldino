@@ -17,25 +17,27 @@ function hole_eintraege($umgedreht = false){
 
 function loesche_eintraege($id){
     $db = getDBconnection();
-    $query_loeschen = 'DELETE
+    $query_loeschen = "DELETE
                     FROM entry
-                    WHERE id like '.$id;
-    return $query_loeschen->fetch();
+                    WHERE id = $id";
+    $db->query($query_loeschen);
     
 }
 
-
-function erstelle_eintraege($title, $text, $timestamp, $user_id){
+function erstelle_eintraege($title, $text){
     $db = getDBconnection();
-    $query_erstellen = "INSERT INTO entry (title, text, timestamp, user_id)
-            VALUES (".$title.", ".$text.", ".$timestamp.", ".$user_id[0].")";
+    
+    $nickname = $_SESSION["eingeloggt"];
+    $uid=1;
+    //$uid = $db->query("SELECT ID FROM user WHERE nickname = $nickname");
+    $query_erstellen = "INSERT INTO entry (title, text, user_id) VALUES ('$title','$text',$uid)";
     $result = $db->query($query_erstellen);
-    return  $result->fetch();
+    
 }
 
 function logge_ein($n, $p){
     $db = getDBconnection();
-    $query = "SELECT id, name FROM `user` 
+    $query = "SELECT id, name FROM user 
     where nickname = '$n' AND
     password = '$p'";
     $result = $db->query($query);

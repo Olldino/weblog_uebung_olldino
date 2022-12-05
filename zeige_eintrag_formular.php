@@ -1,14 +1,18 @@
 <?php
-    require_once 'includes/konfiguration.php';
-    require_once 'includes/funktionen.inc.php';
-    session_start();
-    
-    // Nur ein eingeloggter Benutzer darf neue Einträge posten. 
-    if (! ist_eingeloggt()) {
-    	header('Location: index.php');
-    	exit;
-    }
+require_once 'includes/konfiguration.php';
+require_once 'includes/funktionen.inc.php';
+session_start();
+
+// Nur ein eingeloggter Benutzer darf neue Einträge posten. 
+if ( (! ist_eingeloggt())) {
+    header('Location: index.php');
+    exit;
+}
+
+
+
 ?>
+
 <!DOCTYPE html>
 
 <html>

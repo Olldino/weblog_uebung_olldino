@@ -14,7 +14,7 @@ $neuereintrag= array();
         );
         
      
-        erstelle_Beitrag($neuereintrag['titel'], $neuereintrag['inhalt'], $neuereintrag['erstellt_am'], $neuereintrag['autor'] );
+        erstelle_eintraege($neuereintrag['titel'], $neuereintrag['inhalt'], $neuereintrag['erstellt_am'], $neuereintrag['autor'] );
         file_put_contents(PFAD_EINTRAEGE, serialize($neuereintrag));
     ?>
 

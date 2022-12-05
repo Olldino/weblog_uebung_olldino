@@ -16,15 +16,14 @@
     // Erstelle einen neuen Eintrag im Format der anderen Einträge
     $eintrag = array(
         'titel'       => trim($_POST['titel']),
-        'inhalt'      => trim($_POST['inhalt']),
-        'autor'       => $_SESSION['eingeloggt'],
-        'erstellt_am' => time()
+        'inhalt'      => trim($_POST['inhalt'])
+        
     );
     
     // hole die alten Einträge, hänge den neuen an und speichere
-    $eintraege   = hole_eintraege();
-    $eintraege[] = $eintrag;
-    file_put_contents(PFAD_EINTRAEGE, serialize($eintraege));
+    erstelle_eintraege($eintrag['titel'], ['inhalt']);
+   
+    
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
